@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-section {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .form-section h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        .db-btn {
+            background-color: #28a745;
+        }
+        .db-btn:hover {
+            background-color: #218838;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Eventos</h1>
+
+    <!-- Formulario para Insertar un Nuevo Evento -->
+    <div class="form-section">
+        <h3>Añadir Nuevo Evento</h3>
+        <form action="./BaseXClient/eventos/insertar.php" method="post">
+            <label>Nombre: <input type="text" name="nombre" required></label>
+            <label>Fecha: <input type="date" name="fecha" required></label>
+            <label>Descripción:<br>
+                <textarea name="descripcion" rows="4" cols="40" required></textarea>
+            </label>
+            <button type="submit">Guardar Evento</button>
+        </form>
+    </div>
+
+    <!-- Formulario para Borrar un Evento por ID -->
+    <div class="form-section">
+        <h3>Eliminar Evento</h3>
+        <form action="./BaseXClient/eventos/Borrar.php" method="post">
+            <label>ID del Evento: <input type="text" name="id" required></label>
+            <button type="submit" class="delete-btn">Eliminar Evento</button>
+        </form>
+    </div>
+
+    <!-- Formulario para Filtrar un Evento por ID -->
+    <div class="form-section">
+        <h3>Buscar Evento por ID</h3>
+        <form action="./BaseXClient/eventos/Filtrar.php" method="get">
+            <label>ID del Evento: <input type="text" name="id" required></label>
+            <button type="submit">Buscar Evento</button>
+        </form>
+    </div>
+
+    <!-- Formulario para Editar un Evento -->
+    <div class="form-section">
+        <h3>Editar Evento</h3>
+        <form action="./BaseXClient/eventos/EditarEvento.php" method="get">
+            <label>ID del Evento: <input type="text" name="id" required></label>
+            <button type="submit">Cargar Evento para Editar</button>
+        </form>
+    </div>
+
+    <!-- Formulario para Gestionar la Base de Datos Resultados Económicos -->
+    <div class="form-section">
+        <h3>Gestionar Base de Datos Resultados Económicos</h3>
+        <form action="./BaseXClient/eventos/ResultadosEconomicos.php" method="post">
+            <button type="submit" name="action" value="create" class="db-btn">Crear Base de Datos</button>
+            <button type="submit" name="action" value="delete" class="delete-btn">Eliminar Base de Datos</button>
+        </form>
+    </div>
+
+    <!-- Enlace para Ver Todos los Eventos -->
+    <a href="./BaseXClient/eventos/ver_eventos.php">Ver Lista Completa de Eventos</a>
+</body>
+</html>
